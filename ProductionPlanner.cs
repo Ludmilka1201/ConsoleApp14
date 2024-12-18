@@ -2,7 +2,7 @@ namespace ConsoleApp14;
 
 public class ProductionPlanner
 {
-     public ProductionPlan PlanOrder(Order order)
+    public ProductionPlan PlanOrder(Order order)
     {
         ProductionPlan plan = new ProductionPlan();
         plan.Order = order;
@@ -25,6 +25,8 @@ public class ProductionPlanner
                 plan.TotalTime += step.Time;
             }
         }
+
+        order.CompletionDate = DateTime.Now + TimeSpan.FromHours(plan.TotalTime);
 
         return plan;
     }
